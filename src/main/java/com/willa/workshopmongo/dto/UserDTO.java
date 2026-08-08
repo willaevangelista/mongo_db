@@ -3,11 +3,13 @@ package com.willa.workshopmongo.dto;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.willa.workshopmongo.domain.User;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @JsonPropertyOrder({"id", "name", "email"})
 public class UserDTO implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String id;
