@@ -22,7 +22,7 @@ public class UserService {
 
     public User findById(String id) {
         Optional<User> user = userRepository.findById(id);
-        return user.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+        return user.orElseThrow(() -> new ObjectNotFoundException("User not found"));
     }
 
     public User insert(User user) {
@@ -31,7 +31,7 @@ public class UserService {
 
     public User update(User user) {
         User newUser = userRepository.findById(user.getId())
-                .orElseThrow(() -> new ObjectNotFoundException("Object not found"));
+                .orElseThrow(() -> new ObjectNotFoundException("User not found"));
         updateData(newUser, user);
         return userRepository.save(newUser);
     }
