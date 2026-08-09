@@ -1,5 +1,6 @@
 package com.willa.workshopmongo.resources;
 
+import com.willa.workshopmongo.domain.Post;
 import com.willa.workshopmongo.domain.User;
 import com.willa.workshopmongo.dto.UserDTO;
 import com.willa.workshopmongo.services.UserService;
@@ -31,6 +32,12 @@ public class UserResource {
     public ResponseEntity<UserDTO> findById(@PathVariable String id) {
         User user = userService.findById(id);
         return ResponseEntity.ok().body(new UserDTO(user));
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 
     @PostMapping
